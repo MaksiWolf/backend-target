@@ -23,16 +23,15 @@
 			if(strpos($num2,$p2) !== false) 
 			{
 				$get_url = strip_tags(substr($num2,0,strpos($num2,stripslashes($p2))+3)); //парсим результат на предмет первого запроса в яндексе 
-				$get_url = str_replace("amp;","",$get_url);					 			  //убираем теги amp из ссылки генерируемой яндексом  
-				$get_page = file_get_contents($get_url);					 			  //переходим по ссылке
-				preg_match("/URL=(.*)\">/" , $get_page , $url_return);		 			  //парсим присылаемый яндексом html код, в поисках конечной ссылки 
-				$url_anything = $url_return[1];					      		 		      //получаем url из присылаемого html кода по запросу
-				$url_anything = str_replace("'","",$url_anything);    		 			  //убираем ковычки 
-				$get_page_anything = file_get_contents($url_anything);		 			  //загрузили страницу первого результата
+				$get_url = str_replace("amp;","",$get_url);				  //убираем теги amp из ссылки генерируемой яндексом  
+				$get_page = file_get_contents($get_url);				  //переходим по ссылке
+				preg_match("/URL=(.*)\">/" , $get_page , $url_return);		 	  //парсим присылаемый яндексом html код, в поисках конечной ссылки 
+				$url_anything = $url_return[1];					      	  //получаем url из присылаемого html кода по запросу
+				$url_anything = str_replace("'","",$url_anything);    		 	  //убираем ковычки 
+				$get_page_anything = file_get_contents($url_anything);		 	  //загрузили страницу первого результата
 				preg_match_all('/<title>(.*)<\/title>/', $get_page_anything, $title); 	  //парсим значение title
-				//print_r($title[1]);
 				$result_arr = array("date" => $title[1]);								  
-				$jsone_result = json_encode($result_arr, JSON_UNESCAPED_UNICODE);		  //формируем итоговый ответ в формате json 
+				$jsone_result = json_encode($result_arr, JSON_UNESCAPED_UNICODE);	  //формируем итоговый ответ в формате json 
 				print_r($jsone_result); 
 			} 
 		}

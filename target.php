@@ -48,12 +48,9 @@
 			$dom->save('result.xml'); // сохранение файла 
 			
 		}
-
 		$xml =simplexml_load_file('result.xml');
-
 		
 		$str = $_GET["mail"]; 
-
 		$result = stristr($str,'@');
 		if($result !== false)
 		{
@@ -90,5 +87,4 @@
 	{
 		xml_part(); 
 	}	
-
 ?>

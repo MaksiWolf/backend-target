@@ -1,7 +1,7 @@
 <?php
 	$URL = "/html/target.php/";
 	
-	function get_time()
+	function get_time() //Получает время
 	{
 		$time = Array(); 
 		$time = getdate();
@@ -9,7 +9,7 @@
 		return $time_moment; 
 	}
 	
-	function get_title()
+	function get_title() //Парсит Яндекс, и выводит title первого результата поиска 
 	{
 		$p1 = addslashes('http://yandex.ru/');	
 		$p2 = addslashes('=ru');
@@ -37,7 +37,7 @@
 		}
 	}
 	
-	function xml_part()
+	function xml_part() //Проверяет, подходит ли передаваемое значение как e-mail адрес, и записывает результат в xml 
 	{
 		if(file_exists('result.xml') == false)
 		{	

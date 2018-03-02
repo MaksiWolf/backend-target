@@ -46,7 +46,6 @@
 			$dom->formatOutput = true; 
 			$dom->saveXML(); 
 			$dom->save('result.xml'); // сохранение файла 
-			
 		}
 		$xml =simplexml_load_file('result.xml');
 		
